@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FocusDay — Design system « Aube & Crépuscule »
+   ============================================================ */
+@theme {
+  --color-brand: #6366f1;
+  --color-brand-soft: #818cf8;
+  --color-amber: #f59e0b;
+  --color-amber-soft: #fbbf24;
+  --color-mint: #10b981;
+  --color-rose: #f43f5e;
+  --color-slate: #64748b;
+
+  --font-display: var(--font-space);
+  --font-body: var(--font-inter);
+
+  --animate-slide-up: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-pulse-now: pulseNow 2.5s ease-in-out infinite;
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes pulseNow {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.45; }
+  }
+}
+
+:root {
+  --bg: #f6f7fb; --bg-2: #ffffff; --bg-3: #eef1f8;
+  --text: #1e293b; --text-soft: #64748b; --text-mute: #94a3b8;
+  --border: #e2e8f0; --border-strong: #cbd5e1;
+  --shadow: 0 4px 20px rgba(30,41,59,0.06);
+  --shadow-lg: 0 12px 40px rgba(30,41,59,0.12);
+}
+[data-theme="dark"] {
+  --bg: #0f1420; --bg-2: #1a2032; --bg-3: #131829;
+  --text: #e8ecf5; --text-soft: #a0aec8; --text-mute: #6b7694;
+  --border: #262f45; --border-strong: #333f5c;
+  --shadow: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.45);
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+::selection { background: var(--color-brand); color: #fff; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px; border-radius: 6px;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong); border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Composants réutilisables ---- */
+.chip {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--bg-3);
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.chip:hover { background: var(--color-brand); color: #fff; border-color: var(--color-brand); transform: translateY(-1px); }
+.chip-mint:hover { background: var(--color-mint); border-color: var(--color-mint); }
+.chip-rose:hover { background: var(--color-rose); border-color: var(--color-rose); }
+
+.btn-primary {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  background: var(--color-brand);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+}
+.btn-primary:hover { background: var(--color-brand-soft); transform: translateY(-2px); box-shadow: 0 8px 20px color-mix(in srgb, var(--color-brand) 35%, transparent); }
+.btn-ghost {
+  font-weight: 500; font-size: 0.9rem;
+  padding: 0.6rem 1rem; border-radius: 10px;
+  background: transparent; color: var(--text-soft);
+  border: 1px solid var(--border); cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-ghost:hover { background: var(--bg-3); color: var(--text); }
+
+.field {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  transition: border-color 0.2s;
+}
+.field:focus { outline: none; border-color: var(--color-brand); }
+.field-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-bottom: 0.35rem;
+}
+
+.card-surface {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+/* ============================================================
+   NavBar responsive — bascule liens complets <-> menu burger
+   ============================================================ */
+.nav-links { display: flex; }
+.nav-burger { display: none; }
+
+@media (max-width: 720px) {
+  .nav-links { display: none !important; }
+  .nav-burger { display: inline-flex !important; }
+}
