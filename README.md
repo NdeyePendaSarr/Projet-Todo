@@ -11,23 +11,29 @@ et l'app te relance quand l'heure approche. Le soir, tu débriefes.
 
 ## Aperçu
 
-| Ma journée — thème clair | Ma journée — thème sombre |
+Le tableau de bord, en **thème clair** et **thème sombre** :
+
+| Thème clair | Thème sombre |
 | :---: | :---: |
-| ![FocusDay en thème clair](screenshots/journee_claire.png) | ![FocusDay en thème sombre](screenshots/journee_sombre.png) |
+| ![Tableau de bord en thème clair](screenshots/theme_clair.png) | ![Tableau de bord en thème sombre](screenshots/dashboard.png) |
 
-**La timeline du jour**, avec le curseur « maintenant » qui glisse et chaque objectif placé sur son créneau :
+**Ta journée** — la timeline avec le curseur « maintenant » qui glisse, et le taux de réussite qui se met à jour en direct :
 
-![Timeline de la journée avec objectifs](screenshots/objectifs_definis.png)
+![Vue « Ta journée » avec la timeline](screenshots/journee.png)
 
-**Les objectifs en cartes** — statut riche (à faire / en cours / terminé), description et le « pourquoi » qui motive :
+**Créer un objectif** — un nom, un créneau horaire, une description, et surtout le « pourquoi » qui te motive :
 
-![Objectifs sous forme de cartes](screenshots/objectifs_definis_bis.png)
+![Formulaire de création d'objectif](screenshots/formulaire.png)
 
-**Le tableau de bord** — taux de réussite, courbe des derniers jours, météo du moment et journal des débriefs :
+**Les objectifs en cartes** — statut riche (à faire / en cours / terminé / manqué) et actions rapides sur chaque objectif :
 
-![Tableau de bord](screenshots/dashboard.png)
+![Objectifs affichés en cartes](screenshots/objectifs_definis.png)
 
-**L'historique** — recherche, filtres (tout / réussis / manqués). Tes données restent dans ton navigateur (`localStorage`), donc l'historique reste consultable même sans connexion :
+**Le débrief du soir** — le moment réflexif qui distingue FocusDay d'une simple liste : as-tu atteint tes objectifs ? fait plus que prévu ? quelle humeur ?
+
+![Débrief du soir](screenshots/objectifs_atteints.png)
+
+**L'historique** — recherche et filtres (tout / réussis / manqués). Tes données restent dans ton navigateur (`localStorage`), donc l'historique reste consultable même sans connexion :
 
 ![Historique des objectifs](screenshots/historique.png)
 
