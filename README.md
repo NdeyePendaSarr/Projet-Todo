@@ -97,10 +97,11 @@ Le plus simple est **Vercel** (éditeur de Next.js) :
 
 ## Origine
 
-Le concept prolonge un sujet d'examen de M1 (todo-list Flutter + API PHP/MySQL) en
-allant bien au-delà : là où le sujet demandait de *stocker* des tâches, FocusDay
-cherche à *accompagner* une journée — avec les créneaux, le pourquoi, les rappels
-et le débrief réflexif.
+Le concept prolonge un sujet d'examen de M1 réalisé en **2025** (todo-list
+Flutter + API PHP/MySQL). Je l'ai repris et largement personnalisé en **2026**
+pour aller bien au-delà : là où le sujet demandait de *stocker* des tâches,
+FocusDay cherche à *accompagner* une journée — avec les créneaux, le pourquoi,
+les rappels et le débrief réflexif.
 
 ---
-Conçu par NPS.
+Conçu par **Ndeye Penda Sarr** — 2025–2026.
