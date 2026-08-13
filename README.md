@@ -6,6 +6,9 @@ FocusDay t'aide à piloter ta journée par créneaux horaires : tu planifies tes
 objectifs (de quelle heure à quelle heure), tu dis *pourquoi* c'est important,
 et l'app te relance quand l'heure approche. Le soir, tu débriefes.
 
+> **Démo en ligne :** _à compléter après déploiement_ — voir la section [Déploiement](#déploiement).
+> _(Remplace cette ligne par ton URL Vercel, par ex. `https://focus-day.vercel.app`.)_
+
 ## Aperçu
 
 | Ma journée — thème clair | Ma journée — thème sombre |
@@ -24,7 +27,7 @@ et l'app te relance quand l'heure approche. Le soir, tu débriefes.
 
 ![Tableau de bord](screenshots/dashboard.png)
 
-**L'historique** — recherche, filtres (tout / réussis / manqués), disponible même hors connexion :
+**L'historique** — recherche, filtres (tout / réussis / manqués). Tes données restent dans ton navigateur (`localStorage`), donc l'historique reste consultable même sans connexion :
 
 ![Historique des objectifs](screenshots/historique.png)
 
@@ -38,7 +41,7 @@ et l'app te relance quand l'heure approche. Le soir, tu débriefes.
 - **Timeline de journée** — un ruban de temps avec un curseur « maintenant » qui glisse.
 - **Débrief du soir** — as-tu atteint tes objectifs ? fait plus ? qu'a-t-il manqué ?
 - **Tableau de bord** — taux de réussite, courbe des derniers jours, météo du moment.
-- **Historique** avec recherche, disponible hors connexion.
+- **Historique** avec recherche. Les données vivant dans `localStorage`, il reste consultable hors connexion (l'app n'est pas encore une PWA à service worker).
 - **Thème clair / sombre**.
 
 ## Stack
@@ -54,12 +57,41 @@ et l'app te relance quand l'heure approche. Le soir, tu débriefes.
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:3000
 ```
+
+Autres commandes :
+
+```bash
+npm test           # tests unitaires (Vitest)
+npm run lint       # ESLint (config plate Next 16)
+npx tsc --noEmit   # vérification des types
+npm run build      # build de production
+```
+
+## Qualité & tests
+
+- **TypeScript strict** de bout en bout, aucune erreur de type.
+- **Tests unitaires (Vitest)** sur la couche métier temporelle (`lib/time.ts`) :
+  conversion des heures, créneaux qui traversent minuit, détection de
+  chevauchements, calcul des statistiques, bascule automatique en « manqué ».
+- **Intégration continue** (GitHub Actions) : lint + types + tests + build
+  à chaque push et pull request (`.github/workflows/ci.yml`).
+- **Accessibilité** : navigation clavier (Échap/Entrée sur les dialogues),
+  attributs ARIA, focus visible, respect de `prefers-reduced-motion`.
+
+## Déploiement
+
+Le plus simple est **Vercel** (éditeur de Next.js) :
+
+1. Pousse le dépôt sur GitHub.
+2. Sur [vercel.com](https://vercel.com), « New Project » → importe le dépôt.
+3. Aucune variable d'environnement requise (tout est en `localStorage`).
+4. Déploie, puis reporte l'URL obtenue en haut de ce README.
 
 ## Origine
 
-Le concept prolonge un sujet d'exame de M1 (todo-list Flutter + API PHP/MySQL) en
+Le concept prolonge un sujet d'examen de M1 (todo-list Flutter + API PHP/MySQL) en
 allant bien au-delà : là où le sujet demandait de *stocker* des tâches, FocusDay
 cherche à *accompagner* une journée — avec les créneaux, le pourquoi, les rappels
 et le débrief réflexif.

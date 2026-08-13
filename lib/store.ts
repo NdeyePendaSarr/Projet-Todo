@@ -87,5 +87,10 @@ export const debriefStore = {
 };
 
 export function uid(): string {
+  // randomUUID : natif, sans collision, dispo navigateur (contexte sûr) + Node 16+.
+  // Repli sur l'ancienne méthode pour les rares environnements sans Web Crypto.
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import type { Task, TaskStatus } from "@/lib/types";
 import { useTasks, useNow } from "@/lib/useTasks";
 import { useReminders } from "@/lib/useReminders";
@@ -27,10 +27,10 @@ export default function HomePage() {
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState<Task | null>(null);
   const [debriefKey, setDebriefKey] = useState(0);
-  const existingDebrief = useMemo(
-    () => debriefStore.byDate(today),
-    [today, debriefKey, tasks]
-  );
+  // Lecture directe depuis localStorage (peu coûteux) : se rafraîchit à chaque
+  // rendu, donc après un enregistrement de débrief (setDebriefKey provoque le
+  // re-rendu) ou un refresh des tâches. Pas de useMemo nécessaire ici.
+  const existingDebrief = debriefStore.byDate(today);
   // Le débrief apparaît en fin de journée (après 18h) ou s'il existe déjà
   const showDebrief = ready && tasks.length > 0 && (now >= 18 * 60 || existingDebrief);
 
