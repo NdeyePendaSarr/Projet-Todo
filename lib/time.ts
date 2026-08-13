@@ -154,7 +154,7 @@ const FR_MONTHS = [
 
 export function prettyDate(iso: string): string {
   const d = new Date(iso + "T00:00:00");
-  return `${FR_DAYS[d.getDay()]} ${d.getDate()} ${FR_MONTHS[d.getMonth()]}`;
+  return `${FR_DAYS[d.getDay()]} ${d.getDate()} ${FR_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 /**
