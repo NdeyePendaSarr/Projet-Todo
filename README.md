@@ -6,6 +6,28 @@ FocusDay t'aide à piloter ta journée par créneaux horaires : tu planifies tes
 objectifs (de quelle heure à quelle heure), tu dis *pourquoi* c'est important,
 et l'app te relance quand l'heure approche. Le soir, tu débriefes.
 
+## Aperçu
+
+| Ma journée — thème clair | Ma journée — thème sombre |
+| :---: | :---: |
+| ![FocusDay en thème clair](screenshots/journee_claire.png) | ![FocusDay en thème sombre](screenshots/journee_sombre.png) |
+
+**La timeline du jour**, avec le curseur « maintenant » qui glisse et chaque objectif placé sur son créneau :
+
+![Timeline de la journée avec objectifs](screenshots/objectifs_definis.png)
+
+**Les objectifs en cartes** — statut riche (à faire / en cours / terminé), description et le « pourquoi » qui motive :
+
+![Objectifs sous forme de cartes](screenshots/objectifs_definis_bis.png)
+
+**Le tableau de bord** — taux de réussite, courbe des derniers jours, météo du moment et journal des débriefs :
+
+![Tableau de bord](screenshots/dashboard.png)
+
+**L'historique** — recherche, filtres (tout / réussis / manqués), disponible même hors connexion :
+
+![Historique des objectifs](screenshots/historique.png)
+
 ## Ce qui le rend différent
 
 - **Créneaux horaires** — chaque objectif a une plage (08:00–10:00), pas juste une date.

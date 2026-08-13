@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import type { Task, TaskStatus } from "@/lib/types";
 import { useTasks, useNow } from "@/lib/useTasks";
 import { useReminders } from "@/lib/useReminders";
@@ -17,6 +17,12 @@ export default function HomePage() {
   const { tasks, ready, addTask, updateTask, setStatus, archiveTask } = useTasks(today);
   const now = useNow();
   const { permission, requestPermission } = useReminders(tasks);
+
+  // La date affichée dépend de l'heure réelle : au prerender statique, `today`
+  // serait figé au jour du build et différerait du jour de visite → mismatch
+  // d'hydratation (React #418). On ne rend la date qu'après le montage client.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState<Task | null>(null);
@@ -54,7 +60,7 @@ export default function HomePage() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1rem", marginBottom: "1.5rem" }}>
           <div>
             <p style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--color-brand)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              {prettyDate(today)}
+              {mounted ? prettyDate(today) : "\u00A0"}
             </p>
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 700, marginTop: 4 }}>
               Ta journée
