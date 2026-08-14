@@ -6,7 +6,7 @@ FocusDay t'aide à piloter ta journée par créneaux horaires : tu planifies tes
 objectifs (de quelle heure à quelle heure), tu dis *pourquoi* c'est important,
 et l'app te relance quand l'heure approche. Le soir, tu débriefes.
 
-> **🔗 Démo en ligne : [projet-todo-five.vercel.app](https://projet-todo-five.vercel.app/)**
+> **🔗 Démo en ligne : [focus-day-nps.vercel.app](https://focus-day-nps.vercel.app/)**
 
 ## Aperçu
 
@@ -92,7 +92,7 @@ Le plus simple est **Vercel** (éditeur de Next.js) :
 1. Pousse le dépôt sur GitHub.
 2. Sur [vercel.com](https://vercel.com), « New Project » → importe le dépôt.
 3. Aucune variable d'environnement requise (tout est en `localStorage`).
-4. Déploie — l'app est en ligne ici : [projet-todo-five.vercel.app](https://projet-todo-five.vercel.app/).
+4. Déploie — l'app est en ligne ici : [focus-day-nps.vercel.app](https://focus-day-nps.vercel.app/).
 
 ## Origine
 
